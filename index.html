@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helix</title>
+  <style>
+    html{
+      background: #333;
+    }
+    body{
+      display: grid;
+      height: 100vh;
+      place-items: center;
+      font-size: 3vmin;
+    }
+    .helix{
+      transform: rotateZ(45deg);
+    }
+    .strand{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+      margin: 0.35em auto;
+      --d: calc(var(--i) / var(--total));
+      --color: hsl(calc(-0.05turn + (var(--d)* 0.85turn )), 95%, 75%);
+      --duration: 1.5s;
+      --delay: calc((var(--duration) * -1) + 0.1s * var(--i));
+      -webkit-animation: var(--duration) cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      animation: var(--duration) cubic-bezier(0.4, 0, 0.6, 1) infinite ;
+      -webkit-animation-delay: var(--delay);
+      animation-delay: var(--delay);
+    }
+    .left, .right{
+      -webkit-animation: inherit;
+      animation: inherit;
+      display: grid;
+      grid-template-areas: "layer";
+      align-items: center;
+      width: 7em;
+    }
+    .left > *, .right > *{
+      grid-area: layer;
+
+    }
+    .left{
+      transform: translateZ(0px);
+    }
+    .right{
+      transform: scale(-1);
+    }
+    .dot{
+      -webkit-animation: inherit;
+      animation: inherit;
+      -webkit-animation-direction: calc(var(--duration)* 2);
+      animation-duration: calc(var(--duration) * 2);
+      -webkit-animation-name: move-dot;
+      animation-name: move-dot;
+      --scale-start: 0.5;
+      --scale-end: 1;
+    }
+    @-webkit-keyframes move-dot{
+      50%{
+        transform: translateX(200%);
+      }
+    }
+    .right .dot{
+      --scale-start: 1;
+      --scale-end: 0.5;
+    }
+    .dot::before{
+      content: '';
+      display: block;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background: var(--color);
+      -webkit-animation: inherit;
+      animation: inherit;
+    -webkit-animation-name: scale-dot;
+    animation-name: scale-dot;
+    }
+    @-webkit-keyframes scale-dot{
+      33%{
+        transform: scale(var(--scale-start));
+      }
+      66%{
+        transform: scale(var(--scale-end));
+      }
+    }
+    @keyframes scale-dot{
+      33%{
+        transform: scale(var(--scale-start));
+      }
+      66%{
+        transform: scale(var(--scale-end));
+      }
+    }
+    .line{
+      width: calc(100% - 1.5em);
+      height: 0.25em;
+      border-radius: 1em;
+      background: var(--color);
+      margin-left: auto;
+      transform-origin: center right;
+      -webkit-animation: infinite;
+      animation: inherit;
+      -webkit-animation-name: scale-line;
+      animation-name: scale-line;
+    }
+    @-webkit-keyframes scale-line{
+      50%{
+        transform: scale(0.1);
+      }
+    }
+    @keyframes scale-line{
+      50%{
+        transform: scale(0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="helix" style="--total:20">
+    <div class="strand" style="--i:1">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:2">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:3">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:4">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:5">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:6">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:7">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:8">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:9">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:10">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:11">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:12">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:13">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:14">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:15">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:16">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:17">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:18">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:19">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="strand" style="--i:20">
+      <div class="left">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
